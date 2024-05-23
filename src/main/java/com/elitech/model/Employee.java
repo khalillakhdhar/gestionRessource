@@ -14,7 +14,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +33,7 @@ private String nom;
 @NotBlank
 private String prenom;
 @Column(nullable = false,unique = true)
-@Email
+
 private String email;
 @Column(nullable = false)
 @NotBlank

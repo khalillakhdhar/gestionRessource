@@ -9,9 +9,11 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 @Entity
 @Getter
 @Setter
+@ToString
 public class BankDetails {
 @Id
 private long id;
