@@ -18,6 +18,7 @@ import com.elitech.model.Employee;
 import com.elitech.model.Formation;
 import com.elitech.repos.CongeRepository;
 import com.elitech.repos.EmployeeRepository;
+import com.elitech.repos.FormationRepository;
 import com.elitech.services.EmployeeService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class EmployeeServiceImp implements EmployeeService {
 private final EmployeeRepository employeeRepository;
 
 private final CongeRepository congeRepository;
+private final FormationRepository formationRepository;
 	
 	@Override
 	public Page<EmployeeDTO> getAllEmployees(Pageable pageable) {
@@ -68,7 +70,7 @@ private final CongeRepository congeRepository;
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public EmployeeDTO assignFormationToEmployee(long id, FormationDTO formation) {
 		// TODO Auto-generated method stub
 		Employee employee=employeeRepository.findById(id).orElse(null);
@@ -81,7 +83,7 @@ private final CongeRepository congeRepository;
 		
 		return null;
 	}
-
+*/
 	@Override
 	public EmployeeDTO assignCongeToEmployee(long id, Conge conge) {
 		// TODO Auto-generated method stub
@@ -92,6 +94,23 @@ private final CongeRepository congeRepository;
 			congeRepository.save(conge);
 			return EmployeeMapper.convertToDto(employee);
 		}
+		
+		return null;
+	}
+
+	@Override
+	public EmployeeDTO assignFormationToEmployee(long id, long idFormation) {
+		// TODO Auto-generated method stub
+		Employee emp=employeeRepository.findById(id).orElse(null);
+		Formation formation=formationRepository.findById(id).orElse(null);
+		if(emp!=null && formation!=null)
+		{
+			Set<Formation> formations=emp.getFormations();
+			formations.add(formation);
+			emp.setFormations(formations);
+			return EmployeeMapper.convertToDto(employeeRepository.save(emp));
+		}
+		
 		
 		return null;
 	}

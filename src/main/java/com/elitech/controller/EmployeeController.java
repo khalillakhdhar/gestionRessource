@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.elitech.dto.BankDetailsDTO;
@@ -23,7 +24,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class EmployeeController {
 
-private final EmployeeService employeeService; 
+private final EmployeeService employeeService;
+//SOLID principal
 
 @GetMapping
 public Page<EmployeeDTO> getEmployees(Pageable pageable)
@@ -51,9 +53,9 @@ public EmployeeDTO assignToBank(@PathVariable long id,@RequestBody BankDetailsDT
 return employeeService.assignBankToEmployee(id, bankDetails);	
 }
 @PostMapping("/formation/{id}")
-public EmployeeDTO assignToFormation(@PathVariable long id, @RequestBody FormationDTO formation)
+public EmployeeDTO assignToFormation(@PathVariable long id, @RequestParam long idformation)
 {
-return employeeService.assignFormationToEmployee(id, formation);	
+return employeeService.assignFormationToEmployee(id, idformation);	
 }
 @PostMapping("/conge/{id}")
 public EmployeeDTO assignToConge(@PathVariable long id,@RequestBody Conge conge)

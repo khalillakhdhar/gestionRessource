@@ -17,6 +17,6 @@ public EmployeeDTO addOneEmployee(EmployeeDTO employee);
 public void deleteOneEmployee(long id);
 public Optional<EmployeeDTO> findOneEmployee(long id);
 public EmployeeDTO assignBankToEmployee(long id,BankDetailsDTO bankDetailsDTO);
-public EmployeeDTO assignFormationToEmployee(long id,FormationDTO formation);
+public EmployeeDTO assignFormationToEmployee(long id,long idFormation);
 public EmployeeDTO assignCongeToEmployee(long id,Conge conge);
 }

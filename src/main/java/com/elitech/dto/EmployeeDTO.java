@@ -21,7 +21,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class EmployeeDTO {
+public class EmployeeDTO extends BaseDTO{
 @NotBlank
 private String nom;
 @NotBlank
@@ -37,6 +37,5 @@ private String telephone;
 private List<CongeDTO> conges;
 @JsonIgnoreProperties("employee")
 private BankDetailsDTO bankDetails;
-@JsonIgnoreProperties("employees")
-private Set<FormationDTO> formations;
+
 }
